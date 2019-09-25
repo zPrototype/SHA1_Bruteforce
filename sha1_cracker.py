@@ -17,12 +17,12 @@ with open(sys.argv[1], "r") as hashfile:
 
 print("Start cracking...")
 with open(sys.argv[2], "r") as wordlist:
-    for line in wordlist:
-        line = line.strip('\n')
-        sha1_hash = hashlib.sha1(line.encode()).hexdigest()
+    for password in wordlist:
+        password = password.strip('\n')
+        sha1_hash = hashlib.sha1(password.encode()).hexdigest()
         if sha1_hash in hashes:
             print("Found matching hash: " + sha1_hash)
-            print("Password is: " + line)
+            print("Password is: " + password)
 
 td = time.time() - ts
 print("Done in " + str(td) + " sec.")
